@@ -473,6 +473,9 @@ typedef NS_ENUM(NSUInteger, FLEXFileBrowserSortAttribute) {
     } else {
         // Share sheet for files
         UIActivityViewController *shareSheet = [[UIActivityViewController alloc] initWithActivityItems:@[filePath] applicationActivities:nil];
+        if ([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad) {
+            shareSheet.popoverPresentationController.sourceView = sender;
+        }
         [self presentViewController:shareSheet animated:true completion:nil];
     }
 }
